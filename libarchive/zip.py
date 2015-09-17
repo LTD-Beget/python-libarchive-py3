@@ -1,10 +1,11 @@
-import os, time
+import os
+import time
 from libarchive import is_archive, Entry, SeekableArchive
 from zipfile import ZIP_STORED, ZIP_DEFLATED
 
 
 def is_zipfile(filename):
-    return is_archive(filename, formats=('zip', ))
+    return is_archive(filename, formats=('zip',))
 
 
 class ZipEntry(Entry):
@@ -23,7 +24,7 @@ class ZipEntry(Entry):
         return self.size
 
     def set_file_size(self, value):
-        assert isinstance(value, (int, long)), 'Please provide size as int or long.'
+        assert isinstance(value, int), 'Please provide size as int or long.'
         self.size = value
 
     file_size = property(get_file_size, set_file_size)
@@ -69,7 +70,7 @@ class ZipFile(SeekableArchive):
             _libarchive.archive_write_set_format_option(self.archive._a, "zip", "compression", "store")
         self.compression = compression
 
-    getinfo     = SeekableArchive.getentry
+    getinfo = SeekableArchive.getentry
 
     def namelist(self):
         return list(self.iterpaths)
