@@ -163,7 +163,7 @@ def is_archive(f, formats=(None, ), filters=(None, )):
         filter = get_func(filter, FILTERS, 0)
         if filter is None:
             return False
-        list(filter(a))
+        filter(a)
     try:
         try:
             call_and_check(_libarchive.archive_read_open_fd, a, a, f.fileno(), BLOCK_SIZE)
