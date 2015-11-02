@@ -36,7 +36,7 @@ except ImportError:
 
 
 name = 'python-libarchive'
-version = '3.1.4_py3.1'
+version = '3.1.4_py3.2'
 release = '1'
 versrel = version + '-' + release
 readme = 'README.rst'

@@ -351,7 +351,7 @@ class Entry(object):
         '''Creates an archive header and writes it to the given archive.'''
         e = _libarchive.archive_entry_new()
         try:
-            _libarchive.archive_entry_set_pathname(e, self.pathname.encode(self.encoding))
+            _libarchive.archive_entry_set_pathname(e, self.pathname)
             _libarchive.archive_entry_set_filetype(e, stat.S_IFMT(self.mode))
             _libarchive.archive_entry_set_perm(e, stat.S_IMODE(self.mode))
             _libarchive.archive_entry_set_size(e, self.size)
